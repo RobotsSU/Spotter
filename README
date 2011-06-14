@@ -1,1 +1,4 @@
-This is the Singularity University robot project Spotter.  Spotter is a telepresence robot based on an iRobot Create coupled to a Samsung Galaxy 10.1 tablet.  Spotter uses cellbots to control movement and Tango for video conferencing.
+This is the Singularity University robot project Spotter.
+
+Spotter is a telepresence robot based on an iRobot Create coupled to a Samsung Galaxy 10.1 tablet.
+Spotter uses cellbots to control movement and Tango for video conferencing.
