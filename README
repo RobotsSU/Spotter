@@ -1,1 +1,6 @@
 This is the cellbots branch.  Cellbots is an open source project that uses Android phones to control robots via Bluetooth.
+
+You can just download cellbots from the Android market to your phone.
+
+However, the UI leaves a lot to be desired, so we have the source code here, all setup to work nicely in Eclipse.  If you want to modify the source, then download Elipse and the Android SDK, get it installed, and this source loads and compiles.
+
