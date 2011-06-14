@@ -1,0 +1,290 @@
+//to Create cellbotProtos.java:  protoc --java_out=../src/  Cellbots.proto
+//to create the protostuff schmeas: java -jar ../war/WEB-INF/lib/protostuff-compiler-1.0.0.M4-jarjar.jar complileserver.properties
+//to create the protostuff overlays: java -jar ../war/WEB-INF/lib/protostuff-compiler-1.0.0.M4-jarjar.jar complileclient.properties
+package cellbots;
+
+option java_package = "com.cellbots";
+option java_outer_classname = "CellbotProtos";
+
+
+message  AudioVideoFrame{ //can be used for setting params or sending data
+  optional int64 timestamp = 1; 
+  optional bytes data = 2;
+  optional int64 frameNumber = 3;
+  optional string sourceID = 4;
+  optional int32 whiteBalance = 5;
+  optional int32 zoomLevel = 6;
+  optional int32 compressionLevel = 7;
+  optional int32 widthPx = 8;
+  optional int32 heightPx = 9;
+  optional int32 timeSpan = 10; //in mili secondss
+  optional bool lightOn = 11; //in mili secondss
+  enum Encoding {
+      JPEG = 1;
+      H263 = 2;
+      H264 = 3;
+      MP3 = 4;
+      AAC = 5;
+      WAV = 6;
+  }
+  optional Encoding encoding = 12;
+  optional string botID = 16;
+}
+
+message HALConnection{
+    optional string address = 1;
+    optional string name = 2;
+    optional string uuid = 3;
+    optional int32 baudRate = 5;
+    optional bytes readBuffer = 6;
+    optional bytes writeBuffer = 7;
+    optional bytes delimiter = 8;
+    optional int32 rssi = 9; 
+
+    enum ConnectionDirection {
+      READ_ONLY = 1;
+      WRITE_ONLY = 2;
+      HALF_DUPLEX = 3;
+      FULL_DUPLEX = 4;
+    }
+
+    enum ConnectionType {
+      HARDWARE_SERIAL = 1;
+      BLUETOOTH_SERIAL = 2;
+      AUDIO_SERIAL = 3;
+      AUDIO_PWM = 4;
+      AUDIO_PPM = 5;
+      AUDIO_AM = 6;
+      AUDIO_FM = 7;
+      INFRARED = 8;
+    }
+
+    enum ConnectionState {
+      DISCONNECTED = 1;
+      PAIRED = 2;
+      BONDING = 3;
+      BONDED = 4;
+      TALKING = 5;
+      WAITING = 7;      
+      PAUSED = 8;
+      ERROR = 9;
+    }
+    
+    optional ConnectionDirection connectionDirection = 11;
+    optional ConnectionType connectionType = 12;
+    optional ConnectionState  connectionState  = 13; 
+    optional ConnectionState  prevConnectionState   = 14;
+    optional int64 timestamp = 15;
+    optional string botID = 16;
+    optional string dbgMsg = 17;
+}
+
+
+
+message PhoneState {
+  required int64 timestamp = 1; 
+  optional string botID = 2;
+  optional string dbgMsg = 3;
+  
+  message Compass{
+    optional float x = 1;  
+    optional float y = 2;
+    optional float z = 3;
+  }
+  optional Compass compass = 4;
+  
+  message Accelerometer {
+  
+  	optional float x = 1;
+  	optional float y = 2; 
+  	optional float z = 3;  
+  }
+  optional Accelerometer accelerometer = 5;
+  
+  message Orientation {
+    optional float azimuth = 6; 
+    optional float pitch = 7;
+    optional float  roll = 8;
+  }
+  optional Orientation orientation = 6;
+  
+  optional float phoneBatteryLevel =  7;
+  optional int32 phoneBatteryTemp =  8;
+  optional float lightLevel = 9;
+  optional bool vibrating = 10;
+  optional bool notificationLightOn = 11;
+  optional int32 notificationLightFreq = 12;
+  optional int32 notificationLightColor = 13;
+  optional int32 proximity = 14;
+  optional int32 screenBrightness = 15;
+
+  message WIFI {
+    optional bool enabled = 1;
+    optional bool connected = 2;
+    optional int32 strength = 3;
+    optional int32 kbps = 4;
+    optional int32 ssid = 5;
+    optional int32 ip = 6;
+    optional int32 chanel = 7;
+    optional bool adhoc = 8;
+  }
+  optional WIFI wifi = 16;
+
+  message Cellular {
+    optional bool enabled = 1;
+    optional bool connected = 2;
+    optional int32 strength = 3;
+    optional int32 kbps = 4;
+    optional int32 ip = 5;
+    optional bool roaming = 6;
+  }
+  optional Cellular cellular = 17;
+
+  message Location{
+     optional float  accuracy = 1; // Returns the accuracy of the fix in meters.
+     optional double altitude = 2; // Returns the altitude of this fix.
+     optional float bearing = 3; // Returns the direction of travel in degrees East of true North.
+     required double latitude = 4; // Returns the latitude of this fix.
+     required double longitude = 5; // Returns the longitude of this fix.
+     optional string provider = 6; // Returns the name of the provider that generated this fix, or null if it is not associated with a provider.
+     optional float speed = 7; // Returns the speed of the device over ground in meters/second.
+     optional int64 time = 8; // Returns the UTC time of this fix, in milliseconds since January 1, 1970.kkkkkkkk
+  }
+  optional Location location = 18;
+  optional bool gpsEnabled = 19;
+  optional HALConnection HALConnection = 20;  
+}
+
+
+message ControllerState {
+  required int64 timestamp = 1;
+  
+  message KeyEvent {
+    required string keyCode = 1;
+    optional bool keyDown = 2 ;
+    optional bool keyUp = 3 ;
+    optional float keyPressure = 4 ;
+  }
+  repeated KeyEvent keyEvent = 2;
+  
+  message StickEvent {
+    enum StickType {
+      ANALOG = 1;
+      ORIENTATION = 2;
+      LINEAR_ACCEL = 3;
+      ANGULAR_ACCEL = 4;
+      SLIDER = 5;
+      WHEEL = 6;
+      MOUSE = 7;
+    }
+    required StickType stickType = 1;
+    required int32 stickNumber = 2;
+    optional float x=3;
+    optional float y=4;
+    optional float z=5;
+  }
+  repeated StickEvent stickEvent = 3;  
+ 
+  optional string txtCommand = 4;
+  optional string controllerID = 5;
+  optional string botID = 16;
+}
+
+message  HALCommand {
+  optional int64 timestamp = 1; 
+  optional string txtCommand = 2;
+  optional bool allStop = 3;
+  
+  message Servo {
+    required string  ID = 1;
+    optional int32 speed = 3;
+    optional int32 targetPosition = 4;
+    optional int32 torque = 5;
+    optional bool freeWheel = 6; 
+  }
+  repeated Servo servo = 4;
+
+  message Motor {
+    required string  ID = 1;
+    optional int32 steps = 2; 
+    optional int32 speed = 3; //postive for foward, neg for backward
+    optional bool freeWheel = 4; 
+  }
+  repeated Motor motor = 5;
+
+  message PWM {
+    required string  ID = 1;
+    required int32 frequency = 2;
+    required int32 duty = 3;
+  }
+  repeated PWM pwm =  6;
+
+  message Relay {
+    required string  ID = 1;
+    required bool on = 2;
+  }
+  repeated Relay relay =  7;
+  optional string botID = 16;
+}
+
+message  HALState{
+  required int64 timestamp = 1; 
+  optional string dbgMessage = 2 ;
+  
+  optional int32 vBat =  3;//in mili Volts
+  optional int32 currentDraw =  4; // in mili Amps
+  optional int32 powerUsed =  5; //in mili Amp Hours
+  optional int32 batteryTemp =  6; //in deg Celsius
+
+  optional int32 vCC = 7;//in mili Volts 
+
+  message SensorValue {
+    required string ID = 1;
+    optional bool outOfRange = 2;
+    optional int32 value = 3;
+    optional int32 prevValue = 4;
+    optional int32 minSenseableValue = 5;
+    optional int32 maxSenseableValue = 6;
+
+    enum SensorUnits {
+      MILIVOLTS = 1;
+      MILIAMPS = 2;
+      DEG_CELISUS = 3;
+      CENTIMETERS = 4;
+      COUNT = 5; //for wheel encoders
+      LUX = 8;
+      SATURATON_RED = 9;
+      SATURATON_GREEN = 10;
+      SATURATON_BLUE = 11;
+      TIME_MS = 12;
+      HZ = 13;
+      PULSE_WIDTH_MS = 13;
+      RESISTNACE_OHMS = 14;
+      PRESSURE_MILIBAR = 15;
+    }
+    optional SensorUnits sensorUnits = 7;
+  }
+  repeated SensorValue sensorValue = 8;
+  optional string botID = 16;
+}
+
+
+service HALService {
+    rpc connect(HALConnection) returns (HALConnection);
+    rpc execute(HALCommand) returns (HALState);
+    rpc getConnectionStatus(HALConnection) returns (HALConnection);
+    //rpc getFullState(void) returns (HALState);
+}
+
+service MasterControlService {
+    rpc processControllerEvent(ControllerState) returns (PhoneState);
+    rpc setVideoOptions(AudioVideoFrame) returns (AudioVideoFrame);
+    rpc processAVFrame(AudioVideoFrame) returns (PhoneState);
+    //method getPhoneState() returns (PhoneState);
+}
+
+service HIDService{ 
+    rpc displayAVFrame(AudioVideoFrame) returns (ControllerState);
+    rpc displayPhoneState(PhoneState) returns (ControllerState);
+    rpc displayHALSensorData(HALState) returns (ControllerState);
+}

@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent"
+  android:background="@drawable/full_background">
+
+  <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:padding="10dip"
+    android:src="@drawable/cellbot" />
+  
+  <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+  <LinearLayout
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:padding="15dp" >
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:padding="15dp" android:textSize="20sp"
+      android:textColor="#cccccc"
+      android:gravity="center_vertical"
+      android:background="@drawable/splash_border"
+      android:text="@string/splash_text" />
+    <TextView android:layout_width="fill_parent" android:layout_height="10dp"/>
+    <Button android:id="@+id/launcher_continue" android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:padding="15dp"
+      android:background="@drawable/continue_button_selector"
+      android:textSize="20sp" android:text="Continue" />
+  </LinearLayout>
+  </ScrollView>
+
+</LinearLayout>

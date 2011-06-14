@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.3//EN"
+    "http://java.sun.com/dtd/web-app_2_3.dtd">
+
+<web-app>
+
+
+  <servlet>
+    <servlet-name>wiimoteServlet</servlet-name>
+    <servlet-class>com.cellbots.cellserv.server.WiimoteServiceImpl</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>wiimoteServlet</servlet-name>
+    <url-pattern>/cellserv/wiimote</url-pattern>
+  </servlet-mapping>
+
+
+
+  <servlet>
+    <servlet-name>videoServlet</servlet-name>
+    <servlet-class>com.cellbots.cellserv.server.VideoServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>videoServlet</servlet-name>
+    <url-pattern>/video</url-pattern>
+  </servlet-mapping>
+  
+  
+   <servlet>
+    <servlet-name>robotStateServlet</servlet-name>
+    <servlet-class>com.cellbots.cellserv.server.RobotStateServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>robotStateServlet</servlet-name>
+    <url-pattern>/robotState</url-pattern>
+  </servlet-mapping>
+
+  <!-- Default page to serve -->
+  <welcome-file-list>
+    <welcome-file>CellServ.html</welcome-file>
+  </welcome-file-list>
+
+
+
+</web-app>

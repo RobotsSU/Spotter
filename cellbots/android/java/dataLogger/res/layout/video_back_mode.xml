@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+  <!-- Video -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <com.cellbots.logger.BackCamcorderPreview
+      android:id="@+id/surface" android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:enabled="false"
+      android:focusable="true" android:clickable="true" />
+
+  </LinearLayout>
+
+
+
+  <!-- Sensor Data Drawer -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+
+    <View android:layout_width="wrap_content" android:layout_height="10dip"
+      android:layout_weight="315" android:background="#00FF0000" />
+
+    <SlidingDrawer android:layout_width="wrap_content" android:id="@+id/dataDrawer"
+      android:handle="@+id/dataHandleButton" android:content="@+id/dataContentLayout"
+      android:padding="10sp" android:layout_height="10dip"
+      android:layout_weight="290" android:background="#0000FF00">
+
+      <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:id="@+id/dataHandleButton" android:background="@android:color/transparent"
+        android:visibility="gone" />
+      <LinearLayout android:orientation="horizontal" android:id="@+id/dataContentLayout"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <LinearLayout android:orientation="vertical"
+          android:layout_width="120dip" android:layout_height="183dip"
+          android:background="@drawable/data_hud_bg_empty" android:paddingTop="6dip"
+          android:paddingLeft="12dip">
+
+          <TextView android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF" android:textStyle="bold"
+            android:layout_height="wrap_content" android:textSize="11sp"
+            android:text="data" />
+          <TextView android:layout_width="wrap_content"
+            android:textSize="1sp" android:textStyle="bold"
+            android:layout_height="wrap_content" android:text="" />
+
+          <!-- Accelerometer -->
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="AccX:" />
+            <TextView android:id="@+id/accelerometerX_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textSize="11sp" android:textStyle="bold"
+              android:layout_height="wrap_content" android:text="NaN" />
+          </LinearLayout>
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="AccY:" />
+            <TextView android:id="@+id/accelerometerY_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textSize="11sp" android:textStyle="bold"
+              android:layout_height="wrap_content" android:text="NaN" />
+          </LinearLayout>
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="AccZ:" />
+            <TextView android:id="@+id/accelerometerZ_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textSize="11sp" android:textStyle="bold"
+              android:layout_height="wrap_content" android:text="NaN" />
+          </LinearLayout>
+
+
+
+          <!-- Gyro -->
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="GyrX:" />
+            <TextView android:id="@+id/gyroX_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textStyle="bold" android:textSize="11sp"
+              android:layout_height="wrap_content" android:text="NaN" />
+          </LinearLayout>
+
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="GyrY:" />
+            <TextView android:id="@+id/gyroY_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textStyle="bold" android:textSize="11sp"
+              android:layout_height="wrap_content" android:text="NaN" />
+          </LinearLayout>
+
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="GyrZ:" />
+            <TextView android:id="@+id/gyroZ_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textStyle="bold" android:textSize="11sp"
+              android:layout_height="wrap_content" android:text="NaN" />
+          </LinearLayout>
+
+          <TextView android:layout_width="wrap_content"
+            android:textSize="1sp" android:textStyle="bold"
+            android:layout_height="wrap_content" android:text="" />
+
+          <!-- Magnetic Field -->
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="MagX:" />
+            <TextView android:id="@+id/magneticFieldX_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textStyle="bold" android:layout_height="wrap_content"
+              android:textSize="11sp" android:text="NaN" />
+          </LinearLayout>
+
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="MagY:" />
+            <TextView android:id="@+id/magneticFieldY_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textStyle="bold" android:layout_height="wrap_content"
+              android:textSize="11sp" android:text="NaN" />
+          </LinearLayout>
+
+          <LinearLayout android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:orientation="horizontal">
+            <TextView android:layout_width="wrap_content"
+              android:textColor="#FFFFFFFF" android:textStyle="bold"
+              android:textSize="11sp" android:layout_height="wrap_content"
+              android:text="MagZ:" />
+            <TextView android:id="@+id/magneticFieldZ_text"
+              android:layout_width="wrap_content" android:textColor="#FFFF0000"
+              android:textStyle="bold" android:layout_height="wrap_content"
+              android:textSize="11sp" android:text="NaN" />
+          </LinearLayout>
+        </LinearLayout>
+        <TextView android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="1" />
+      </LinearLayout>
+    </SlidingDrawer>
+
+
+  </LinearLayout>
+
+
+
+  <!-- Temp/Memory Drawer -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <View android:layout_width="wrap_content" android:layout_height="10dip"
+      android:layout_weight="315" android:background="#00FF0000" />
+
+    <SlidingDrawer android:layout_width="wrap_content" android:id="@+id/diagnosticsDrawer"
+      android:handle="@+id/diagnosticsHandleButton" android:content="@+id/diagnosticsContentLayout"
+      android:padding="10sp" android:layout_height="10dip"
+      android:layout_weight="290" android:background="#0000FF00">
+
+      <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:id="@+id/diagnosticsHandleButton" android:background="@android:color/transparent"
+        android:visibility="gone" />
+      <LinearLayout android:orientation="horizontal"
+        android:id="@+id/diagnosticsContentLayout" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:gravity="center_horizontal">
+        <TextView android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="1" />
+        <LinearLayout android:orientation="vertical"
+          android:layout_width="120dip" android:layout_height="183dip"
+          android:background="@drawable/diagnostics_hud_bg" android:paddingTop="6dip"
+          android:paddingLeft="12dip">
+          <TextView android:layout_width="wrap_content"
+            android:textColor="#FFFFFFFF" android:textStyle="bold"
+            android:layout_height="wrap_content" android:textSize="10sp"
+            android:text="temp(C)   storage(%)" />
+          <LinearLayout android:orientation="horizontal"
+            android:layout_width="wrap_content" android:layout_height="wrap_content">
+            <LinearLayout android:orientation="vertical"
+              android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="10dip">
+              <TextView android:layout_width="wrap_content"
+                android:paddingTop="70dip"
+                android:id="@+id/batteryTemp_text"
+                android:textColor="#FFFFFFFF" android:textStyle="bold"
+                android:layout_height="wrap_content" android:textSize="12sp"
+                android:text="←12" />
+            </LinearLayout>
+            <LinearLayout android:orientation="vertical"
+              android:layout_width="wrap_content" android:layout_height="wrap_content" android:paddingLeft="43dip">
+              <TextView android:layout_width="wrap_content"
+                android:id="@+id/storage_text"
+                android:textColor="#FFFFFFFF" android:textStyle="bold"
+                android:layout_height="wrap_content" android:textSize="12sp"
+                android:paddingTop="70dip"
+                android:text="←50" />
+            </LinearLayout>
+          </LinearLayout>
+        </LinearLayout>
+      </LinearLayout>
+    </SlidingDrawer>
+  </LinearLayout>
+
+
+
+  <!-- Recording Text -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <LinearLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:orientation="horizontal"
+      android:background="@drawable/top_bar">
+      <LinearLayout android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:orientation="horizontal"
+        android:id="@+id/flashingRecGroup" android:visibility="invisible">
+        <ImageView android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:src="@drawable/rec_dot"
+          android:padding="10dip" />
+        <TextView android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:text="Recording"
+          android:textStyle="bold" android:textColor="#FFFF0000"
+          android:paddingTop="5dip" />
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+
+  <!-- Recording Time -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <LinearLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:orientation="horizontal">
+      <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1" />
+      <TextView android:id="@+id/recTime" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:text="00:00:00"
+        android:textStyle="bold" android:textColor="#FFFFFFFF" android:padding="5dip" />
+    </LinearLayout>
+  </LinearLayout>
+
+
+  <!-- Control Panel Backdrop -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:layout_weight="1" />
+
+
+    <ImageButton android:layout_width="wrap_content"
+      android:layout_height="wrap_content" android:background="@android:color/transparent"
+      android:src="@drawable/ui_backplate" />
+  </LinearLayout>
+
+  <!-- Control Panel Data and Diagnostic Buttons -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:layout_weight="1" />
+    <LinearLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:orientation="horizontal">
+      <ImageButton android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:id="@+id/button_data"
+        android:background="@android:color/transparent" android:src="@drawable/data_button_up"
+        android:paddingBottom="5dip" android:paddingLeft="30dip"/>
+      <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1" />
+      <ImageButton android:layout_width="wrap_content" android:id="@+id/button_diagnostics"
+        android:layout_height="wrap_content" android:background="@android:color/transparent"
+        android:src="@drawable/diagnostics_button_up" android:paddingBottom="5dip" android:paddingRight="30dip"/>
+    </LinearLayout>
+  </LinearLayout>
+
+  <!-- Control Panel Record Button -->
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical">
+    <View android:layout_width="wrap_content" android:layout_height="wrap_content"
+      android:layout_weight="1" />
+
+    <LinearLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:orientation="horizontal">
+      <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1" />
+      <ImageButton android:id="@+id/button_record"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:background="@android:color/transparent" android:src="@drawable/rec_button_up"
+        android:padding="10dip" />
+      <TextView android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1" />
+    </LinearLayout>
+  </LinearLayout>
+
+
+  <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:orientation="vertical"
+    android:visibility="gone">
+
+    <!-- Start/stop control buttons -->
+    <LinearLayout android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:orientation="horizontal"
+      android:layout_marginTop="16dip">
+
+      <LinearLayout android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:orientation="vertical">
+        <TextView android:layout_width="wrap_content"
+          android:textColor="#FFFF0000" android:textStyle="bold"
+          android:layout_height="wrap_content" android:text="BattTemp: " />
+        <TextView android:id="@+id/batteryTemp_text"
+          android:layout_width="wrap_content" android:textColor="#FFFF0000"
+          android:textStyle="bold" android:layout_height="wrap_content"
+          android:text="0" />
+      </LinearLayout>
+
+      <Button android:id="@+id/button_record" android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Start recording"
+        android:textStyle="bold" android:layout_alignParentRight="true" />
+      <Button android:id="@+id/button_stopQuit" android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="\nStop recording and quit\n"
+        android:background="#FFFF0000" android:textStyle="bold"
+        android:layout_alignParentRight="true" android:visibility="gone" />
+    </LinearLayout>
+
+
+
+  </LinearLayout>
+
+</FrameLayout>

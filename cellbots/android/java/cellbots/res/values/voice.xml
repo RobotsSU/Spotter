@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Voice control strings -->
+    <string name="voice_loading">Hi! Please wait while I load...</string>
+    <string name="voice_loaded">I\'m ready! Tap the microphone to speak.</string>
+    <string name="voice_help_title">Voice Commands</string>
+    <string name="voice_help_message">
+        Tap the microphone to speak. Tap the X or say \"exit\" to stop listening.\n\n
+        Available commands are:\n
+        - move forward\n
+        - move backward\n
+        - turn left (or counter-clockwise)\n
+        - turn right (or clockwise)\n
+        - take picture\n
+        - get location\n
+        - stop
+    </string>
+    <string name="voice_listening">I\'m listening. What should I do?</string>
+    <string name="voice_not_listening">I\'m no longer listening.</string>
+    <string name="voice_recognized" formatted="false">I heard you say, \"%s\" and interpreted it as \"%s\"</string>
+    <string name="voice_not_recognized">Sorry, I\'m not sure what you said.</string>
+    <string name="voice_failed">Sorry, something went wrong: %s</string>
+    <string name="voice_debug" formatted="false">Heard \"%s\" with confidence %d of %d</string>
+    
+    <!-- Voice commands -->
+    <string-array name="voice_cmd_forward">
+        <item>move forwards</item>
+        <item>go forwards</item>
+        <item>forwards</item>
+        <item>move forward</item>
+        <item>go forward</item>
+        <item>forward</item>
+    </string-array>
+    <string-array name="voice_cmd_backward">
+        <item>move backwards</item>
+        <item>go backwards</item>
+        <item>backwards</item>
+        <item>move backward</item>
+        <item>go backward</item>
+        <item>backward</item>
+        <item>move back</item>
+        <item>go back</item>
+        <item>back</item>
+        <item>reverse</item>
+    </string-array>  
+    <string-array name="voice_cmd_left">
+        <item>turn left</item>
+        <item>left</item>
+        <item>turn counter clockwise</item>
+        <item>counter clockwise</item>
+    </string-array>  
+    <string-array name="voice_cmd_right">
+        <item>turn right</item>
+        <item>right</item>
+        <item>turn clockwise</item>
+        <item>clockwise</item>
+    </string-array>  
+    <string-array name="voice_cmd_picture">
+        <item>take picture</item>
+        <item>picture</item>
+        <item>take photo</item>
+        <item>photo</item>
+    </string-array>  
+    <string-array name="voice_cmd_stop">
+        <item>stop</item>
+    </string-array>  
+    <string-array name="voice_cmd_speak">
+        <item>speak</item>
+    </string-array>  
+    <string-array name="voice_cmd_location">
+        <item>where am I?</item>
+        <item>get location</item>
+        <item>location</item>
+    </string-array>  
+</resources>

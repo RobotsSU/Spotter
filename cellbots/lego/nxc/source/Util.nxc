@@ -1,0 +1,36 @@
+#ifndef UTILS_NXC
+#define UTILS_NXC
+
+// Internal reference for keeping an index into the command
+// to make parsing easier
+int loc = 0;
+
+// Standard number parser, doesn't do anything fancy
+// and can return numbers for invalid inputs
+int getNum(string str) {
+    int strLength = StrLen(str);
+    int num, theSign;
+    theSign = 1;
+    while(loc < strLength && str[loc] != 0 &&
+            (str[loc] < '0' || str[loc] > '9')) {
+        if (str[loc] == '-') {
+            theSign = -1;
+        }
+        loc++;
+    }
+    if(loc == strLength || str[loc] == 0) {
+        loc = -1;
+        return 0;
+    }
+    num = 0;
+    while(loc < strLength && str[loc] >= '0' && str[loc] <= '9') {
+        num *= 10;
+        num += str[loc] - '0';
+        loc++;
+    }
+    num *= theSign;
+    return num;
+}
+
+#endif
+

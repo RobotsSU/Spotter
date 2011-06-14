@@ -1,0 +1,15 @@
+This folder includes all the data necessary to compile the cellbot grammar (cellbot.grxml) file
+into a format that can be used with the SREC speech recognition engine.
+
+Before compiling the grammar, you will need to generate a grxmlcompile executable by obtaining and
+building the Android source tree. Yes, this is painful, but you only need to do it once. When you're
+done, check <android-src>/out/host/<host-arch>/bin/ and make sure there's a grxmlcompile executable.
+You may want to add the bin folder to your path with "export PATH=$PATH:<path-to-bin>".
+
+Next, run "./compile.sh cellbot" to generate the binary G2G file needed for SREC. The script will
+automatically drop the resulting cellbot.g2g file into the res/raw folder. If you're using Eclipse,
+make sure to refresh your project so that you're using the new raw resource.
+
+If you're interested in making changes to the GRXML source, take a look at the W3C grammar spec at
+http://www.w3.org/TR/speech-grammar/ and some example grammars from the Android source tree at
+<android-src>/external/srec/config/en.us/grammars/

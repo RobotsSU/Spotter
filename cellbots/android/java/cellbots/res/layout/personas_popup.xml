@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/personas_popup_menu"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent" >
+    <TableRow>
+      <Button android:id="@+id/popup_happy"
+        android:text="happy"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+      <Button android:id="@+id/popup_sad"
+        android:text="sad"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+    </TableRow>
+    <TableRow>
+      <Button android:id="@+id/popup_suprised"
+        android:text="suprise"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+       <Button android:id="@+id/popup_afraid"
+        android:text="afraid"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+     </TableRow>
+     <TableRow>
+      <Button android:id="@+id/popup_angry"
+        android:text="angry"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+       <Button android:id="@+id/popup_ready"
+        android:text="ready"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+     </TableRow>
+     <TableRow>
+      <Button android:id="@+id/popup_error"
+        android:text="error"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+       <Button android:id="@+id/popup_idle"
+        android:text="idle"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content" />
+     </TableRow>
+</TableLayout>

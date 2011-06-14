@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<selector xmlns:android="http://schemas.android.com/apk/res/android">
+     <item android:state_pressed="true"
+           android:drawable="@drawable/button_location_down_hdpi" />
+     <item android:state_focused="true"
+           android:drawable="@drawable/button_location_over_hdpi" /> 
+     <item android:drawable="@drawable/button_location_up_hdpi" /> <!-- default -->
+</selector>

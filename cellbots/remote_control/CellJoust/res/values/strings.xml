@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="hello">Welcome to Cellbots</string>
+    <string name="app_name">CellJoust</string>
+    <string name="quit">Quit</string>
+    <string name="setup">Setup</string>
+</resources>

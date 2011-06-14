@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+  <ImageView android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:src="@drawable/rocker" />
+
+
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout android:orientation="horizontal"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:gravity="center_horizontal">
+      <View android:layout_width="2dip" android:layout_height="1dip" />
+      <ImageButton android:id="@+id/forward" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:background="@android:color/transparent"
+        android:src="@drawable/dpad_forward" />
+    </LinearLayout>
+
+    <View android:layout_width="wrap_content" android:layout_height="9dip" />
+
+    <LinearLayout android:orientation="horizontal"
+      android:layout_width="fill_parent" android:layout_height="wrap_content">
+
+      <View android:layout_width="65dip" android:layout_height="1dip" />
+
+      <ImageButton android:id="@+id/left" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:background="@android:color/transparent"
+        android:src="@drawable/dpad_left" />
+
+      <View android:layout_width="8dip" android:layout_height="1dip" />
+
+      <ImageButton android:id="@+id/stop" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:background="@android:color/transparent"
+        android:src="@drawable/dpad_stop" />
+
+      <View android:layout_width="8dip" android:layout_height="1dip" />
+
+
+      <ImageButton android:id="@+id/right" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:background="@android:color/transparent"
+        android:src="@drawable/dpad_right" />
+    </LinearLayout>
+
+    <View android:layout_width="wrap_content" android:layout_height="5dip" />
+
+    <LinearLayout android:orientation="horizontal"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:gravity="center_horizontal">
+      <View android:layout_width="2dip" android:layout_height="1dip" />
+      <ImageButton android:id="@+id/backward" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:background="@android:color/transparent"
+        android:src="@drawable/dpad_backward" />
+    </LinearLayout>
+
+  </LinearLayout>
+</FrameLayout>

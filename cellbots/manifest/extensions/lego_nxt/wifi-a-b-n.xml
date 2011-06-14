@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionDescriptor xmlns="http://schemas.google.com/ExtensionDescriptor/2009">
+  <id>http://cellbots.googlecode.com/svn/trunk/manifest/extensions/wifi-a-b-n.xml
+  </id>
+  <vendor>Lego</vendor>
+  <name>Wifi Listener</name>
+  <transport-support>
+    <transport>XMPP user</transport>
+    <protocol-version>1.2></protocol-version>
+    <transport>HTTP relay</transport>
+    <protocol-version>.03></protocol-version>
+  </transport-support>
+</ExtensionDescriptor>

@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:background="@drawable/full_background"
+    android:padding="10px">
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:paddingTop="7dip"
+        android:paddingBottom="15dip" android:src="@drawable/cellbot" />
+
+    <TextView android:id="@+id/blue_info" android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:textSize="15sp"
+        android:text="Cellbot uses Bluetooth to talk directly to robots." />
+
+    <TextView android:id="@+id/blue_info" android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:textSize="15sp"
+        android:text="It appears that Bluetooth is turned off on this phone. If Bluetooth is off, one can only control a robot via the cloud (and usually that means a second phone)." />
+
+    <TextView android:id="@+id/blue_info" android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:textSize="15sp"
+        android:text="If you only have one phone, then you probably want to enable bluetooth to connect to the robot." />
+
+    <TextView android:id="@+id/blue_question"
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:padding="15dp" android:textSize="20sp"
+        android:text="Would you like to turn on Bluetooth?" />
+
+    <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent" android:layout_height="wrap_content">
+        <Button android:id="@+id/blue_cancel" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="Cancel" />
+        <Button android:id="@+id/blue_yes" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:text="Enable Bluetooth" />
+    </LinearLayout>
+        <Button android:id="@+id/blue_cloud" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:padding="15dp"
+            android:text="Web Control Only" />
+</LinearLayout>

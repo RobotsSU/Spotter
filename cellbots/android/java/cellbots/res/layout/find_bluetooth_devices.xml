@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:background="@drawable/full_background">
+
+    <ImageView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:paddingTop="7dip"
+        android:paddingBottom="15dip" android:src="@drawable/cellbot" />
+
+    <TextView android:id="@+id/blue_info"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Paired Devices"
+        android:background="#666"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:paddingLeft="5dp" />
+
+    <ListView android:id="@+id/blue_paired"
+        android:layout_width="fill_parent" android:layout_height="200dp"
+        android:layout_weight="1" />
+
+    <TextView android:id="@+id/title_new_devices"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Other Devices"
+        android:background="#666"
+        android:textColor="#fff"
+        android:textSize="18sp"
+        android:paddingLeft="5dp" />
+
+    <ListView android:id="@+id/new_devices"
+        android:layout_width="fill_parent"
+        android:layout_height="200dp"
+        android:stackFromBottom="true"
+        android:layout_weight="1" />
+
+    <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:textSize="10sp" android:text=" " />
+
+    <LinearLayout android:orientation="horizontal" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" >
+        <Button android:id="@+id/blue_scan" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Scan for devices" />
+        <Button android:id="@+id/blue_cancel" android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="Cancel" />
+    </LinearLayout>
+</LinearLayout>

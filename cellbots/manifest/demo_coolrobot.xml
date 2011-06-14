@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ApplicationManifest xmlns="http://schemas.google.com/ApplicationManifest/2009">
+  <!-- Support info to show in the control panel -->
+  <Support>
+    <Link rel="manage" href="http://lego.com/nxt/admin.php?id=$1234" />
+    <!-- URL explaining how customers get support. -->
+    <Link rel="support" href="http://lego.com/nxt/support.php" />
+  </Support>
+  <Name>CoolRobot</Name>
+  <Description>A simple robot that drives by WIFI</Description>
+  <Extension id="drive1" type="link">
+    <Name>Treaded Differential Drive</Name>
+    <Url>http://cellbots.googlecode.com/svn/trunk/manifest/extensions/diff-drive-treaded.xml
+    </Url>
+  </Extension>
+  <Extension id="wifi1" type="link">
+    <Name>Wifi Listener</Name>
+    <Url>http://cellbots.googlecode.com/svn/trunk/manifest/extensions/wifi-a-b-n.xml
+    </Url>
+  </Extension>
+</ApplicationManifest>

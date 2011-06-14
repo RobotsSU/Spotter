@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="generated"/>
+	<classpathentry kind="src" output="test-classes" path="test"/>
+	<classpathentry kind="con" path="com.google.gwt.eclipse.core.GWT_CONTAINER"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protobuf-java-2.3.0.jar"/>
+	<classpathentry kind="con" path="com.google.appengine.eclipse.core.GAE_CONTAINER"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-api-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-benchmark-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-codegen-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-compiler-1.0.0.M4-jarjar.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-compiler-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-core-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-json-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-maven-plugin-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-model-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-model-json-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-parser-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-runtime-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-xml-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/protostuff-yaml-1.0.0.M4.jar"/>
+	<classpathentry kind="lib" path="war/WEB-INF/lib/gwt-incubator-20100204-r1747.jar"/>
+	<classpathentry kind="output" path="war/WEB-INF/classes"/>
+</classpath>

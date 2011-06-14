@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ExtensionDescriptor xmlns="http://schemas.google.com/ExtensionDescriptor/2009">
+  <id>http://cellbots.googlecode.com/svn/trunk/manifest/extensions/diff-drive-treaded.xml
+  </id>
+  <vendor>Lego</vendor>
+  <name>Treaded Differential Drive</name>
+  <command-support>
+    <command>Wheel Speed</command>
+    <speed-range>w 100 100</speed-range>
+    <direction-map>range -100 to 100 for left and right</direction-map>
+    <command>Basic Ascii Driving</command>
+    <command-set>F,B,L,R,S</command-set>
+  </command-support>
+</ExtensionDescriptor>

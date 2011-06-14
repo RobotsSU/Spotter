@@ -1,0 +1,114 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent" android:layout_height="fill_parent">
+
+
+  <LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:gravity="center_horizontal">
+
+    <!--
+      The Views in here are used as a hack to force the slider to the middle of
+      the screen. If you know how to do the same thing in a cleaner way, please
+      submit a patch to fix it.
+    -->
+    <View android:layout_width="wrap_content" android:layout_height="10dip"
+      android:layout_weight="36" android:background="#00FF0000" />
+
+    <SlidingDrawer android:layout_width="wrap_content" android:id="@+id/SlidingDrawer"
+      android:handle="@+id/slideHandleButton" android:content="@+id/slideContentLayout"
+      android:padding="10sp" android:layout_height="10dip"
+      android:layout_weight="25" android:background="#0000FF00">
+
+
+      <Button android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:id="@+id/slideHandleButton" android:background="@drawable/icon_tray_top_closed"
+        android:contentDescription="@string/open_actions_drawer"></Button>
+
+      <LinearLayout android:orientation="horizontal" android:id="@+id/slideContentLayout"
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:gravity="center_horizontal">
+        <View android:layout_width="20dip" android:layout_height="wrap_content" />
+        <LinearLayout android:orientation="horizontal"
+          android:layout_width="wrap_content" android:layout_height="wrap_content"
+          android:background="@drawable/icon_tray_bottom">
+          <ImageButton android:id="@+id/takePicture"
+            android:paddingLeft="8sp" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:background="@android:color/transparent" android:src="@drawable/tray_icon_take_photo"
+            android:contentDescription="@string/take_picture" />
+          <ImageButton android:id="@+id/speak" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:background="@android:color/transparent" android:src="@drawable/tray_icon_robot_speaks"
+            android:contentDescription="@string/speak" />
+          <ImageButton android:id="@+id/setPersona"
+            android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_weight="1" android:background="@android:color/transparent"
+            android:src="@drawable/tray_icon_persona"
+            android:contentDescription="@string/change_expression" />
+          <ImageButton android:id="@+id/getLocation"
+            android:paddingRight="8sp" android:layout_width="wrap_content"
+            android:layout_height="wrap_content" android:layout_weight="1"
+            android:background="@android:color/transparent" android:src="@drawable/tray_icon_report_location"
+            android:contentDescription="@string/get_location" />
+        </LinearLayout>
+        <View android:layout_width="20dip" android:layout_height="wrap_content" />
+      </LinearLayout>
+    </SlidingDrawer>
+
+    <View android:layout_width="wrap_content" android:layout_height="10dip"
+      android:layout_weight="39" android:background="#000000FF" />
+  </LinearLayout>
+
+
+  <LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="fill_parent">
+    <!-- Add some padding here to account for the status bar at the top of the screen.  -->
+    <View android:layout_width="wrap_content" android:layout_height="1dip"
+      android:layout_weight="5" android:background="#000000FF" />
+    <LinearLayout android:orientation="vertical"
+      android:layout_width="fill_parent" android:layout_height="1dip"
+      android:background="@drawable/background" android:visibility="visible"
+      android:gravity="bottom"
+      android:layout_weight="95"
+      >
+      <LinearLayout android:id="@+id/directionalController_container"
+        android:orientation="vertical" android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:visibility="visible"
+        android:gravity="bottom">
+        <!--
+          This is a hacky way to force the directional controller to the bottom.
+          If you know how to do it right, please submit a patch to fix it.
+        -->
+        <TextView android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="1"
+          android:text="\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n" />
+      </LinearLayout>
+    </LinearLayout>
+  </LinearLayout>
+
+
+  <LinearLayout android:orientation="vertical"
+    android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:visibility="visible">
+
+    <View android:layout_width="wrap_content" android:layout_height="1dip" android:layout_weight="85" android:background="#000000FF"/>
+
+    <LinearLayout android:orientation="horizontal"
+      android:layout_width="fill_parent" android:layout_height="wrap_content">
+      <ImageButton android:id="@+id/previousControl"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:background="@android:color/transparent" android:src="@drawable/mode_switch_rocker_left" />
+      <View android:layout_width="1sp" android:layout_height="1sp"
+        android:layout_weight="1" />
+      <ImageButton android:id="@+id/nextControl"
+        android:layout_width="wrap_content" android:layout_height="wrap_content"
+        android:background="@android:color/transparent" android:src="@drawable/mode_switch_rocker_right" />
+    </LinearLayout>
+
+    <View android:layout_width="wrap_content" android:layout_height="1dip" android:layout_weight="15" android:background="#00FF00FF"/>
+  </LinearLayout>
+
+</FrameLayout>
+

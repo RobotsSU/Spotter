@@ -1,0 +1,311 @@
+<!--
+ Copyright (C) 2010 Google Inc.
+
+ Licensed under the Apache License, Version 2.0 (the "License"); you may not
+ use this file except in compliance with the License. You may obtain a copy of
+ the License at
+
+ http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ License for the specific language governing permissions and limitations under
+ the License.
+-->
+
+<!--
+  This page is served by the local HTTP server. It acts as the remote control
+  for the browser and lets the user control the cellbot using arrow keys and
+  on-screen control button. It also provides controls for other functions
+  such as text-to-speech, etc.
+
+  Author: chaitanyag@google.com (Chaitanya Gharpure) 
+-->
+<html>
+<head>
+<link rel="stylesheet" type="text/css" href="style.css" />
+<script type="text/javascript">
+
+    var src = window.location + '';
+    var ipPort = src.split('/')[2];
+    var previewing = false;
+    var recording = false;
+    var speakTxt, speakCombo;
+    var imageElem;
+    var prevAction;
+    var personas = {
+      'angry': 'persona_tuby_angry.png',
+      'happy': 'persona_tuby_happy.png',
+      'sad': 'persona_tuby_sad.png',
+      'error': 'persona_tuby_error.png',
+      'idle': 'persona_tuby_idle.png',
+      'surprise': 'persona_tuby_surprise.png',
+      'afraid': 'persona_tuby_afraid.png',
+      'ready': 'persona_tuby_ready.png'
+    };
+    var personaDivs = [];
+    
+    var keyCodes = {
+        ARROWUP: 38,
+        ARROWDOWN: 40,
+        ARROWLEFT: 37,
+        ARROWRIGHT: 39,
+        ENTER: 13,
+        ESC: 27,
+        SPACE: 32,
+        SLASH: 191
+    };
+
+    function init() {
+        imageElem = document.getElementById('image');
+        speakTxt = document.getElementById('speak_txt');
+        speakCombo = document.getElementById('speak_sample'); 
+        attachKeyBindings();
+        speakTxt.value = speakCombo.value;
+        populatePersonas();
+    }
+    
+    function selectPersona(key) {
+      for (var i in personaDivs) {
+          personaDivs[i].className = 'persona';
+      }
+      document.getElementById(key).className = 'persona_selected';
+      sendAction('persona ' + key);
+    }
+    
+    function populatePersonas() {
+        var html = '';
+        for (var key in personas) {
+            html += '<img id="' + key + '" class="persona" width="78" type="button" src="' +
+                    personas[key] + '" onclick="selectPersona(\'' + key + '\'); return true;"/><br>';
+        }
+        document.getElementById('personas_div').innerHTML = html;
+        for (var key in personas) {
+            personaDivs.push(document.getElementById(key));
+        }
+    }
+    
+    function attachKeyBindings() {
+        document.addEventListener('keydown', onKeyDown, true);
+        document.addEventListener('keyup', onKeyUp, true);
+        speakCombo.addEventListener('change', onSpeakSelected, true);
+    }
+    
+    function onSpeakSelected(evt) {
+        speakTxt.value = speakCombo.value
+        speakTxt.focus();
+    }
+    
+    function onKeyDown(evt) {
+        if (evt.target == speakTxt ||
+            evt.target == speakCombo) {
+            if (evt.keyCode == keyCodes.ENTER) {
+                sendAction('speak:' + speakTxt.value);
+            }
+            return true;
+        }
+        if (evt.keyCode == keyCodes.SPACE)
+            sendAction('s');
+        else if (evt.keyCode == keyCodes.ARROWUP && prevAction != 'f') {
+            sendAction('f');
+        } else if (evt.keyCode == keyCodes.ARROWDOWN && prevAction != 'b') {
+            sendAction('b');
+        } else if (evt.keyCode == keyCodes.ARROWRIGHT && prevAction != 'r') {
+            sendAction('r');
+        } else if (evt.keyCode == keyCodes.ARROWLEFT && prevAction != 'l') {
+            sendAction('l');
+        }
+    }
+    
+    function onKeyUp(evt) {
+        if (evt.target == speakTxt ||
+            evt.target == speakCombo) {
+            if (evt.keyCode == keyCodes.ESC) {
+                speakTxt.blur();
+                speakCombo.blur();
+                document.body.focus();
+            }
+            return true;
+        }
+        if (evt.keyCode == keyCodes.SPACE ||
+            evt.keyCode == keyCodes.ARROWUP ||
+            evt.keyCode == keyCodes.ARROWDOWN ||
+            evt.keyCode == keyCodes.ARROWRIGHT ||
+            evt.keyCode == keyCodes.ARROWLEFT) {
+            sendAction('s');
+        } else if (evt.keyCode == keyCodes.SLASH) {
+            speakTxt.focus();
+        }
+    }
+    
+    function refreshImage() {
+        window.setTimeout(function() {
+            imageElem.src = 'http://' + ipPort + '/image.jpg';
+        }, 1000);
+    }
+    
+    function onImageLoaded() {
+        if (previewing) {
+            imageElem.src = 'http://' + ipPort + '/image.jpg?time=' + new Date().getTime();
+        }
+    }
+    
+    function onImageLoadError() {
+        if (!imageElem)
+            imageElem = document.getElementById('image');
+        imageElem.src = 'remote_flash.jpg';
+    }
+    
+    function sendPut(str, content) {
+        var xhr = new XMLHttpRequest();
+        xhr.open("PUT", "http://" + ipPort + "/" + str);
+        xhr.send(content);
+    }
+    
+    function startPreview(send) {
+        if (send)
+            sendAction('video on');
+        previewing = true;
+        document.getElementById('preview_button').className =
+            'button stop_preview_button';
+        document.getElementById('preview_button').textContent =
+            'Stop Preview';
+        refreshImage(); 
+    }
+
+    function stopPreview(send) {
+        if (send)
+            sendAction('video off');
+        previewing = false;
+        imageElem.src = 'remote_flash.png';
+        document.getElementById('preview_button').className =
+            'button start_preview_button';
+        document.getElementById('preview_button').textContent = 'Start Preview';
+    }
+
+    function togglePreview() {
+        if (!previewing ) {
+            startPreview(true);
+        } else {
+            stopPreview(true);
+        }
+    }
+    
+    function readData(url) {
+        var req = new XMLHttpRequest();  
+        req.open('GET', url, false);   
+        req.send(null);  
+        if(req.status == 200)
+            return req.responseText;
+        return '';
+    }
+
+    function takePicture() {
+        sendAction('picture');
+        alert("The pic will be saved on the robot phone's SD card under cellbots/pictures");
+    }
+    
+    function sendAction(act) {
+        prevAction = act;
+        sendPut('command.php', act);
+    }
+</script>
+</head>
+<body onload="init();">
+<center>
+
+<table class="titletable">
+    <tr>
+        <td align="center"><img src="cellbots_logo.png"/></td>
+    </tr>
+    <tr>
+        <td class="title">Remote Interface</td>
+    </tr>
+</table>
+
+<table class="maintable" cellspacing="10px"><tr><td>
+
+    <table>
+        <tr>
+            <td align="center" class="preview"><img id="image" src="remote_flash.png"
+                onload="onImageLoaded();" onerror="onImageLoadError();"/>
+            </td>
+        </tr>
+        <tr><td class="buttons_cell" align="center">
+            <table>
+              <tr>
+                <td align="center">
+                  <input type="text" id="speak_txt" size="50"/>
+                  <input type="button" value="Speak"
+                         onclick="sendAction('speak:' + speakTxt.value); return true;"/>
+                </td>
+              </tr>
+              <tr>
+                <td align="center">
+                    <select style="width:395px;" id="speak_sample">
+                    <option value="Hi! Please move out of my way.">
+                        Hi! Please move out of my way.
+                    </option>
+                    <option value="Hi, Can I please have a bag of chips?">
+                        Hi, Can I please have a bag of chips?
+                    </option>
+                    <option value="Can someone please put a snack in my tray?">
+                        Can someone please put a snack in my tray?
+                    </option>
+                    <option value="I am hungry! Hungry for knowledge, hungry for freedom!">
+                        I am hungry! Hungry for knowledge, hungry for freedom!
+                    </option>
+                    <option value="Its time to get back to work :)">
+                        Its time to get back to work :)
+                    </option>
+                  </select>
+                </td>
+              </tr>
+            </table>        
+        </td></tr>
+        <tr>
+            <td class="buttons_cell" align="center">
+                <table class="buttons"><tr>
+                    <td><a href=#" class="button start_preview_button"
+                           id="preview_button"
+                           onclick="togglePreview(); return true;">
+                           Start Preview
+                        </a>&nbsp;
+                    <td><a href=#" class="button"
+                           onclick="takePicture(); return true;">
+                           Take Picture
+                        </a>&nbsp;
+                </tr></table>
+            </td>
+        </tr>
+    </table>
+
+</td>
+
+<td>
+<div id="personas_div" class="personas_div"></div>
+</td>
+
+</tr>
+<tr>
+    <td colspan="2">
+        <ul class="tips">
+            <br>
+            <b>Tips</b>
+            <li>Press arrow keys to drive the robot. Releasing the arrow key or pressing Space bar makes the robot stop.
+            <li>Press '/' to go to the speak text box.
+            <li>While in the speak text box, press Enter to speak the text.
+            <li>Press ESC to leave the speak text box and start driving the robot. 
+            <li>Clicking on the emoticons on the right will make that emoticon show up on the screen of the robot phone.
+            <br><br>
+        </ul>
+    </td>
+</tr>
+
+</table>
+
+
+</center>
+</body>
+</html>

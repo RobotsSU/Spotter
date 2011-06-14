@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <TextView
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:text="Cellbots ServoTester"/>
+  <SeekBar
+    android:id="@+id/LeftServo"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:progress="50"
+    android:layout_marginLeft="4px"
+    android:layout_marginRight="4px"></SeekBar>
+  <TextView
+    android:text="@+id/LeftServoValue"
+    android:id="@+id/LeftServoValue"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"></TextView>
+   <SeekBar
+    android:id="@+id/LeftServo2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:progress="50"
+    android:layout_marginLeft="4px"
+    android:layout_marginRight="4px"></SeekBar>
+  <TextView
+    android:text="@+id/LeftServoValue2"
+    android:id="@+id/LeftServoValue2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"></TextView>
+  <SeekBar
+    android:id="@+id/RightServo"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:progress="50"
+    android:layout_marginLeft="4px"
+    android:layout_marginRight="4px"></SeekBar>
+  <TextView
+    android:text="@+id/RightServoValue"
+    android:id="@+id/RightServoValue"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"></TextView>
+   <SeekBar
+    android:id="@+id/RightServo2"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:progress="50"
+    android:layout_marginLeft="4px"
+    android:layout_marginRight="4px"></SeekBar>
+  <TextView
+    android:text="@+id/RightServoValue2"
+    android:id="@+id/RightServoValue2"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"></TextView>
+  
+  <ToggleButton
+    android:text="Toggle Sound"
+    android:id="@+id/ToggleSound"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content"
+    android:textOff="Toggle Sound"
+    android:textOn="Toggle Sound"
+    android:checked="false"
+    android:onClick="onToggleSound">
+  </ToggleButton>
+  <TextView
+    android:text=" Caution, Improper usage may damage your phone!  
+Connect 3v-5v to +(red) and -(black) of the servos, connect the left(tip) and right(ring) channels of the headphone cord to the signal lines, and connect the headphone ground(sleeve) to the other grounds.  Servos 1 and 3 are positive pulses, Servos 2 and 4 are negative pulses.  
+If you are not getting any response from the servo, try adjusting the volume.  If the servo only goes in one direction, it can also be a symptom of insuffencent volume."
+    android:id="@+id/TextView01"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"></TextView>
+
+</LinearLayout>

@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:layout_width="fill_parent" android:layout_height="fill_parent">
+  <TextView android:id="@+id/voice_result" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:layout_margin="10dp"
+    android:layout_alignParentBottom="true" android:background="@drawable/dialog"
+    android:gravity="center" android:textSize="16sp" android:textColor="@android:color/black"
+    android:text="Sample text." />
+  <ImageView android:id="@+id/cancel" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:layout_toLeftOf="@+id/voice_mic"
+    android:layout_alignBottom="@id/voice_mic" android:src="@drawable/cancel"
+    android:visibility="invisible" />
+  <ImageView android:id="@id/voice_mic" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:layout_above="@id/voice_result"
+    android:layout_centerHorizontal="true" android:src="@drawable/microphone" />
+  <ImageView android:id="@+id/help" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:layout_toRightOf="@id/voice_mic"
+    android:layout_alignBottom="@id/voice_mic" android:src="@drawable/help" />
+  <!--
+    <LinearLayout android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:layout_above="@+id/labels"
+    android:orientation="horizontal"> <TextView android:id="@+id/velocity"
+    android:layout_width="0dp" android:layout_height="wrap_content"
+    android:layout_weight="1.0" android:text="100%" android:textSize="42sp"
+    android:gravity="center" /> <TextView android:id="@+id/acceleration"
+    android:layout_width="0dp" android:layout_height="wrap_content"
+    android:layout_weight="1.0" android:text="100%" android:textSize="42sp"
+    android:gravity="center" /> </LinearLayout> <LinearLayout
+    android:id="@id/labels" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:layout_alignParentBottom="true"
+    android:orientation="horizontal"> <TextView android:layout_width="0dp"
+    android:layout_height="wrap_content" android:layout_weight="1.0"
+    android:text="Velocity" android:gravity="center" /> <TextView
+    android:layout_width="0dp" android:layout_height="wrap_content"
+    android:layout_weight="1.0" android:text="Acceleration"
+    android:gravity="center" /> </LinearLayout>
+  -->
+</RelativeLayout>

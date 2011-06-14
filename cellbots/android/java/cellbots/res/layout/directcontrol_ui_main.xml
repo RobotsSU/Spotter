@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/background">
+  <ImageView android:id="@+id/personasView" android:layout_width="wrap_content"
+    android:layout_height="wrap_content" android:src="@drawable/videoviewblank"
+    android:gravity="top" />
+
+  <View android:layout_width="fill_parent" android:layout_height="fill_parent"
+    android:background="@drawable/background" />
+
+
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:visibility="visible"
+    android:gravity="bottom">
+    <LinearLayout android:id="@+id/dc_controls_layout"
+      android:orientation="vertical" android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:visibility="visible"
+      android:gravity="bottom" />
+  </LinearLayout>
+</FrameLayout>

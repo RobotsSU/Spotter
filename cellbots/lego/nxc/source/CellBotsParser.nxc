@@ -1,0 +1,144 @@
+/*
+* Licensed under the Apache License, Version 2.0 (the "License"); you may not
+* use this file except in compliance with the License. You may obtain a copy of
+* the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+* WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+* License for the specific language governing permissions and limitations under
+* the License.
+*/
+
+#include "Util.nxc"
+
+#define WHEELS OUT_BC
+#define LEFT_WHEEL OUT_B
+#define RIGHT_WHEEL OUT_C
+#define HEAD OUT_A
+
+// 11 is louder than 10 (also, 0 - 9 maps to 0 - 99)
+#define SPEED_MULTIPLIER 11
+
+// A default speed to run motor commands at, can be set
+// by sending a single character between '0' and '9'
+int speed = 5;
+// The length of the command string
+int cmdLength = 0;
+
+// Checks if a speed parameter is included in the command,
+// returns the speed if found or the default.
+int getSpeed(string str) {
+    if (cmdLength > loc) {
+        int num = getNum(str);
+        if (loc != -1 && num >= 0 && num < 10) {
+            // return the speed found
+            return num;
+        }
+    }
+    // return the default speed
+    return speed;
+}
+
+// Processes the command and checks if it matches any of
+// the supported cellBot commands. If a match is found the
+// command will be executed. Returns true if the command
+// was handled, false otherwise.
+bool cellBotsParseCommand(string command) {
+    bool success = false;
+    
+    loc = 0;
+    cmdLength = StrLen(command);
+    if (command[0] == 'f') { // drive forward indefinitely
+        loc = 1;
+        int s = getSpeed(command);
+        OnFwd(WHEELS, s * SPEED_MULTIPLIER);
+        success = true;
+    } else if (command[0] == 'l') { // turn left indefinitely
+        loc = 1;
+        int s = getSpeed(command);
+        OnRev(RIGHT_WHEEL, s * SPEED_MULTIPLIER);
+        OnFwd(LEFT_WHEEL, s * SPEED_MULTIPLIER);
+        success = true;
+    } else if (command[0] == 'r') { // turn right indefinitely
+        loc = 1;
+        int s = getSpeed(command);
+        OnFwd(RIGHT_WHEEL, s * SPEED_MULTIPLIER);
+        OnRev(LEFT_WHEEL, s * SPEED_MULTIPLIER);
+        success = true;
+    } else if (command[0] == 'b') { // drive backward indefinitely
+        loc = 1;
+        int s = getSpeed(command);
+        OnRev(WHEELS, s * SPEED_MULTIPLIER);
+        success = true;
+    } else if (command[0] == 's') { // stop wheels
+        Off(WHEELS);
+        success = true;
+    } else if (cmdLength == 1 && 
+            command[0] >= '0' && command[0] <= '9') { // set default speed
+        speed = command[0] - '0';
+        success = true;
+    } else if (command[0] == 'h') { // head command (third motor)
+        if (cmdLength < 2) return false;
+        loc = 2;
+        int s = getSpeed(command);
+        if (command[1] == 'l') { // head left (left being arbitrary)
+            OnFwd(HEAD, s * SPEED_MULTIPLIER);
+            success = true;
+        }  else if (command[1] == 'r') { // head right (arbitrary)
+            OnRev(HEAD, s * SPEED_MULTIPLIER);
+            success = true;
+        } else if (command[1] == 's') { // head stop
+            Off(HEAD);
+        } else if (command[1] == 'd') { // head distance
+            loc = 3;
+            int dist = getNum(command);
+            if (loc == -1) return false;
+            int s = getSpeed(command);
+            
+            if (command[2] == 'l') { // move head distance and velocity 'left'
+                RotateMotor(HEAD, s * SPEED_MULTIPLIER, dist);
+            } else if (command[2] == 'r') { // move head distance and velocity 'right'
+                RotateMotor(HEAD, s * SPEED_MULTIPLIER, -dist);
+            }
+        }
+    } else if (command[0] == 'd') { // drive distance
+        if (cmdLength < 2) return false;
+        
+        loc = 2;
+        int dist = getNum(command);
+        if (loc == -1) return false;
+        int s = getSpeed(command);
+        
+        if (command[1] == 'f') {
+            // drive forward a given distance
+            RotateMotor(WHEELS, s * SPEED_MULTIPLIER, dist);
+        } else if (command[1] == 'b') {
+            // drive backward a given distance
+            RotateMotor(WHEELS, s * SPEED_MULTIPLIER, -dist);
+        } else if (command[1] == 'l') {
+            // turn left a given distance
+            RotateMotorEx(WHEELS, s * SPEED_MULTIPLIER, dist, -100, true, true);
+        } else if (command[1] == 'r') {
+            // turn right a given distance
+            RotateMotorEx(WHEELS, s * SPEED_MULTIPLIER, dist, 100, true, true);
+        }
+    }
+    
+    if (command[0] == 'w') { // set velocity of the wheels directly
+        loc = 1;
+        int n1;
+        n1 = getNum(command);
+        if (loc == -1) return false;
+        TextOut(0, LCD_LINE3, NumToStr(loc));
+        int n2 = getNum(command);
+        if (loc == -1) return false;
+        
+        OnFwd(LEFT_WHEEL, n1);
+        OnFwd(RIGHT_WHEEL, n2);
+        success = true;
+    }
+    return success;
+}

@@ -1,0 +1,150 @@
+/*
+* Licensed under the Apache License, Version 2.0 (the "License"); you may not
+* use this file except in compliance with the License. You may obtain a copy of
+* the License at
+*
+* http://www.apache.org/licenses/LICENSE-2.0
+*
+* Unless required by applicable law or agreed to in writing, software
+* distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+* WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+* License for the specific language governing permissions and limitations under
+* the License.
+*/
+
+#include "Util.nxc"
+
+#define WHEELS OUT_BC
+#define LEFT_WHEEL OUT_B
+#define RIGHT_WHEEL OUT_C
+#define HEAD OUT_A
+
+#define DEMO_STOP "demoStop"
+#define DEMO_STOP_L 8
+#define DEMO_FIND_WALL "demoFindWall"
+#define DEMO_FIND_WALL_L 12
+#define DEMO_LINEF "demoLineFollow"
+#define DEMO_LINEF_L 14
+
+#define SPEED_SLOW 10
+#define SPEED_FAST 60
+
+bool stopCurrent = false;
+bool taskRunning = false;
+
+int range = 20;
+
+task findWall() {
+    taskRunning = true;
+    TextOut(0, LCD_LINE5, "go!");
+    SetSensorLowspeed(S4);
+    OnFwdSync(WHEELS, 75, 0);
+    while (!stopCurrent) {
+        int currRange = SensorUS(S4);
+        currRange += SensorUS(S4);
+        currRange += SensorUS(S4);
+        currRange /= 3;
+        TextOut(0, LCD_LINE1, "  ");
+        TextOut(0, LCD_LINE1, NumToStr(currRange));
+        if (currRange < range ) {
+            break;
+        }
+        Wait(100);
+    }
+    TextOut(16, LCD_LINE5, "st!");
+    Off(WHEELS);
+    taskRunning = false;
+    stopCurrent = false;
+}
+
+
+int threshold1=600;
+int threshold2=630;
+
+task followLine() {
+    taskRunning = true;
+    TextOut(0, LCD_LINE5, "go!");
+    
+    // set sensor type and mode
+    SetSensorType(IN_3, IN_TYPE_LIGHT_ACTIVE);
+    SetSensorMode(IN_3, IN_MODE_RAW);
+
+    // start looping
+    while (!stopCurrent) {
+        // read the light sensor value
+        int SV = SensorRaw(IN_3);
+    
+        // set speed for motor 1
+        if (SV < threshold2) {
+            OnFwd(LEFT_WHEEL, SPEED_FAST);
+        } else {
+            OnFwd(LEFT_WHEEL, SPEED_SLOW);
+        }
+      
+        // set speed for motor 2
+        if (SV > threshold1) {
+            OnFwd(RIGHT_WHEEL, SPEED_FAST);
+        } else {
+            OnFwd(RIGHT_WHEEL, SPEED_SLOW);
+        }
+      
+        // display sensor value
+        NumOut(0, LCD_LINE1, false, SV);
+    }
+    SetSensorType(IN_3, IN_TYPE_LIGHT_INACTIVE);
+    taskRunning = false;
+    stopCurrent = false;
+}
+
+// Stops all running demo tasks
+void stopTasks() {
+    if (taskRunning) {
+        TextOut(4,LCD_LINE3, "stopping tasks");
+        stopCurrent = true;
+        while (stopCurrent) {
+            // wait
+        }
+    } else {
+        stopCurrent = false;
+    }
+    Off(OUT_ABC);
+}
+
+// Processes the command and checks if it matches any of
+// the supported demoBehavior commands. If a match is found the
+// command will be executed. Returns true if the command
+// was handled, false otherwise.
+bool demoBehaviorsParseCommand(string command) {
+    bool success = false;
+    int cmdLength = StrLen(command);
+    TextOut(10, LCD_LINE1, command);
+    TextOut(0, LCD_LINE1, NumToStr(cmdLength));
+    if (cmdLength == DEMO_STOP_L &&
+            strcmp(DEMO_STOP, command) == 0) {
+        TextOut(15, LCD_LINE1, "stop true");
+        stopTasks();
+        success = true;
+    } else if (cmdLength >= DEMO_FIND_WALL_L &&
+            strncmp(DEMO_FIND_WALL, command, DEMO_FIND_WALL_L) == 0) {
+        loc = DEMO_FIND_WALL_L;
+        int dist = getNum(command);
+        if (loc == -1) {
+            range = 20;
+        } else {
+            range = dist;
+        }
+        stopTasks();
+        Wait(10);
+        TextOut(15, LCD_LINE1, "findWall true");
+        start findWall;
+        success = true;
+    } else if (cmdLength == DEMO_LINEF_L &&
+            strcmp(DEMO_LINEF, command) == 0) {
+        stopTasks();
+        Wait(10);
+        TextOut(15, LCD_LINE1, "lineFollow true");
+        start followLine;
+        success = true;
+    }
+    return success;
+}

@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:paddingLeft="10dp"
+  android:background="@drawable/full_background">
+  
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="10dp" android:text="" />
+  <ImageView
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:src="@drawable/cellbot_direct"/>
+
+  <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:text="Cellbot's Name" android:paddingTop="10dp"/>
+  <TextView android:id="@+id/cellbotname_text" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:textSize="20dp" />
+
+  <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:text="Cellbot Type" android:paddingTop="10dp"/>
+  <TextView android:id="@+id/cellbottype_text" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:textSize="20dp" />
+
+  <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:text="Cellbot Bluetooth" android:paddingTop="10dp"/>
+  <TextView android:id="@+id/bluetooth_text" android:layout_width="fill_parent"
+    android:layout_height="wrap_content" android:textSize="20dp" />
+
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="20dp" android:text="" />
+
+  <LinearLayout
+    android:orientation="horizontal" android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    <Button android:id="@+id/connect_button" android:layout_width="100dp"
+      android:layout_height="wrap_content" android:text="Connect" />
+    <Button android:id="@+id/disconnect_button" android:layout_width="100dp"
+      android:layout_height="wrap_content" android:text="Disconnect" />
+    <Button android:id="@+id/pet_button" android:layout_width="100dp"
+      android:layout_height="wrap_content" android:text="Robopet"
+      android:visibility="invisible" />
+  </LinearLayout>
+
+</LinearLayout>
+

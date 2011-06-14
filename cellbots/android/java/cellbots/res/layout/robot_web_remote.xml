@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/full_background"
+  android:padding="10px">
+
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="10dp" android:text="" />
+  <ImageView
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:src="@drawable/cellbot_new_remote"/>
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="10dp" android:text="" />
+
+  <ScrollView android:layout_width="fill_parent"
+      android:layout_height="fill_parent">
+
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="fill_parent" android:scrollbars="vertical"
+    android:scrollbarAlwaysDrawVerticalTrack="true">
+
+    <TextView android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:text="Web Cellbot's Name" />
+    <EditText android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:id="@+id/remote_name" />
+
+    <TextView android:layout_width="fill_parent"
+      android:layout_height="wrap_content" android:text="Communication Method" />
+    <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:id="@+id/remote_commSelect" />
+
+    <LinearLayout android:orientation="vertical"
+      android:layout_width="fill_parent" android:layout_height="fill_parent"
+      android:visibility="gone" android:id="@+id/remote_appEngine">
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Web Cellbot's AgentID" />
+      <EditText android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/remote_agentId" />
+    </LinearLayout>
+
+    <LinearLayout android:orientation="vertical"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:visibility="gone" android:id="@+id/remote_xmpp">
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Web Cellbot's GMail" />
+      <EditText android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/remote_gmail"
+        android:hint="myrobot@gmail.com" />
+    </LinearLayout>
+
+
+    <LinearLayout android:orientation="vertical"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:visibility="visible" android:id="@+id/remote_http">
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Web Cellbot's URL" />
+      <EditText android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/remote_url"
+        android:hint="http://mywebsite.com/dropbox/" />
+    </LinearLayout>
+
+    <LinearLayout android:orientation="horizontal"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:paddingTop="20dip">
+      <Button android:id="@+id/remote_save" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1"
+        android:text="Done" />
+      <Button android:id="@+id/remote_scan_qrcode" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1"
+        android:text="Scan QR code" />
+      <Button android:id="@+id/remote_cancel" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1"
+        android:text="Cancel" />
+    </LinearLayout>
+  </LinearLayout>
+  </ScrollView>
+</LinearLayout>

@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="splash_text">
+      Drive your robot remotely from anywhere in the world, see through
+      your robot\'s eyes, make the robot speak, have it listen to your
+      speech commands, and do a lot more using Cellbot.\n\nCellbot supports the
+      iRobot Create\u00AE, Roomba\u00AE, LEGO\u00AE MINDSTORMS\u00AE, and VEX\u00AE PRO.
+    </string>
+    <string name="no_cellbot_msg">
+      No cellbots added.
+    </string>
+    
+    <string name="bt_connection_fail_msg">
+      There was an error connecting to the robot\'s Bluetooth.\n\nPlease check
+      that the Bluetooth device is On and try again.
+    </string>
+    
+    <string name="edit_failed_msg">
+      There was an error editing the Cellbot. Please check that the Cellbot name
+      is unique.
+    </string>
+
+    <string name="add_failed_msg">
+      Cellbot with the specified name already exists. Please choose a different name. 
+    </string>
+    
+    <string name="about_dialog_title">Cellbots v1.0</string>
+    
+    <string name="show_qr_text">
+      Scan the following QR code through the Cellbots app on a second phone, to remotely connect to this Cellbot.
+    </string>
+    
+    <string name="picture_taken_msg">The pic will be saved on the robot phone\'s SD card under cellbots/pictures</string>
+    <string name="no_geolocation_msg">Reporting geolocation is not currently supported.</string>
+
+    <!-- Shared -->
+    <string name="app_name">Cellbots</string>
+    <string name="add_cellbot_manually">Enter Cellbot info</string>
+    
+    <string name="settings">Settings</string>
+    <string name="about_menu">About</string>
+    
+    <!-- Remote -->
+    <string name="ui_type_joystick">Joystick</string>
+    <string name="ui_type_buttons">Buttons</string>
+    <string name="ui_type_accelerometer">Accelerometer</string>
+    <string name="ui_type_voice">Voice</string>
+    
+    <!-- Hardware -->
+    <string name="robot_name">mycellbot</string>
+    <string name="robot_pass">Robot’s Google Account password</string>
+    <string name="robot_bt">mybtdevicename</string>
+    
+    <!-- Content Descriptions for the ImageButtons -->
+    <string name="open_actions_drawer">Open actions drawer</string>
+    <string name="close_actions_drawer">Close actions drawer</string>
+    <string name="take_picture">Take picture</string>
+    <string name="speak">Speak</string>
+    <string name="change_expression">Change expression</string>
+    <string name="get_location">Get location</string>
+    <string name="add_cellbot">Add a new cellbot</string>
+
+    <string-array name="copy_files">
+        <item>index.html</item>
+        <item>style.css</item>
+        <item>cellbots_logo.png</item>
+        <item>remote_flash.jpg</item>
+        <item>persona_tuby_angry.png</item>
+        <item>persona_tuby_error.png</item>
+        <item>persona_tuby_afraid.png</item>
+        <item>persona_tuby_surprise.png</item>
+        <item>persona_tuby_sad.png</item>
+        <item>persona_tuby_idle.png</item>
+        <item>persona_tuby_happy.png</item>
+        <item>persona_tuby_ready.png</item>
+    </string-array>
+</resources>

@@ -1,0 +1,10 @@
+srec.jar:
+  Contains the android.speech.srec package that is not normally exposed through the Android SDK.
+  This is a hack-tastic way of avoiding reflection while still being able to use Android's built-in
+  SREC library. This package will be ignored by the Dalvik VM when running the final APK since it
+  duplicates system classes.
+
+voicecontrol.jar:
+  Contains the com.googlecode.eyesfree.voicecontrol package. This is not quite ready to be released
+  as open-source, but it will be available on the Eyes-Free Project's Google Code site by the end of
+  Q4 2010. See http://code.google.com/p/eyes-free/

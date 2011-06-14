@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/full_background"
+  android:padding="10px">
+
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="10dp" android:text="" />
+  <ImageView
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:src="@drawable/cellbot_share"/>
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="10dp" android:text="" />
+
+  <ScrollView android:layout_width="fill_parent"
+    android:layout_height="fill_parent">
+
+    <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+      android:orientation="vertical" android:layout_width="fill_parent"
+      android:layout_height="fill_parent" android:scrollbars="vertical"
+      android:scrollbarAlwaysDrawVerticalTrack="true">
+
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Cellbot's Name" />
+      <EditText android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:id="@+id/share_name" />
+
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Cellbot Type" />
+      <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:id="@+id/share_type" />
+
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Cellbot Bluetooth" />
+      <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:id="@+id/share_bluetooth" />
+
+      <Button android:id="@+id/check_devices" android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Search for more Bluetooth Devices" />
+
+      <TextView android:layout_width="fill_parent"
+        android:layout_height="wrap_content" android:text="Communication Method" />
+      <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:id="@+id/share_commSelect" />
+
+      <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:visibility="gone" android:id="@+id/share_appEngine">
+        <TextView android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:text="Cellbot's AgentID" />
+        <EditText android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:id="@+id/share_agentId" />
+      </LinearLayout>
+
+      <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:visibility="gone" android:id="@+id/share_xmpp">
+        <TextView android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:text="Cellbot's GMail" />
+        <EditText android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:id="@+id/share_gmail"
+          android:hint="myrobot@gmail.com" />
+
+        <TextView android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:text="Cellbot's Password" />
+        <EditText android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:id="@+id/share_passwd"
+          android:hint="@string/robot_pass" />
+      </LinearLayout>
+
+
+      <LinearLayout android:orientation="vertical"
+        android:layout_width="fill_parent" android:layout_height="fill_parent"
+        android:visibility="visible" android:id="@+id/share_http">
+        <TextView android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:text="Cellbot's URL" />
+        <EditText android:layout_width="fill_parent"
+          android:layout_height="wrap_content" android:id="@+id/share_url"
+          android:hint="http://mywebsite.com/dropbox/" />
+        <CheckBox android:layout_width="fill_parent" android:layout_height="wrap_content"
+          android:id="@+id/share_isLocalHttp" android:text="Use local server" />
+      </LinearLayout>
+
+
+      <!-- TODO(chaitanyag): Make this visible when we want to use it -->
+      <CheckBox android:layout_width="fill_parent"
+        android:layout_height="0px" android:id="@+id/share_wifi_loc"
+        android:text="Enable WiFi positioning" android:visibility="invisible" />
+
+      <LinearLayout android:orientation="horizontal"
+        android:layout_width="fill_parent" android:layout_height="wrap_content"
+        android:paddingTop="5dip">
+        <Button android:id="@+id/share_save" android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="1"
+          android:text="Done" />
+        <Button android:id="@+id/share_cancel" android:layout_width="wrap_content"
+          android:layout_height="wrap_content" android:layout_weight="1"
+          android:text="Cancel" />
+      </LinearLayout>
+    </LinearLayout>
+  </ScrollView>
+</LinearLayout>

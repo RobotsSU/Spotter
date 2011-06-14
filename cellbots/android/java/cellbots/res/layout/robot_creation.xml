@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+  android:orientation="vertical" android:layout_width="fill_parent"
+  android:layout_height="fill_parent" android:background="@drawable/full_background"
+  android:padding="10px">
+
+  <TextView android:layout_height="wrap_content" android:layout_width="wrap_content"
+    android:textSize="10dp" android:text="" />
+  <ImageView
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:src="@drawable/cellbot_new"/>
+    
+  <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/add_cellbot_profile_view"
+    android:orientation="vertical" android:layout_width="fill_parent"
+    android:layout_height="0px" android:paddingTop="10dip"
+    android:visibility="invisible">
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:text="Cellbot's Name" />
+    <EditText android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:id="@+id/create_name" />
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:text="Cellbot Type" />
+    <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:id="@+id/create_type" />
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:text="Cellbot Bluetooth" />
+    <Spinner android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:id="@+id/create_bluetooth" />
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:textSize="5dip" android:text=" " />
+
+    <Button android:id="@+id/check_devices" android:layout_width="wrap_content"
+      android:layout_height="wrap_content"
+      android:text="Search for more Bluetooth Devices" />
+
+    <TextView android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:textSize="5dip" android:text=" " />
+
+    <LinearLayout android:orientation="horizontal"
+      android:layout_width="fill_parent" android:layout_height="wrap_content"
+      android:paddingTop="20dip">
+      <Button android:id="@+id/create_save" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1"
+        android:text="Done" />
+      <Button android:id="@+id/create_scan_qrcode" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1"
+        android:text="Scan QR code" />
+      <Button android:id="@+id/create_cancel" android:layout_width="wrap_content"
+        android:layout_height="wrap_content" android:layout_weight="1"
+        android:text="Cancel" />
+    </LinearLayout>
+    
+  </LinearLayout>
+  
+  <LinearLayout android:orientation="vertical"
+    android:id="@+id/top_choices_view"
+    android:layout_width="fill_parent" android:layout_height="wrap_content"
+    android:paddingTop="20dip" android:gravity="center_horizontal">
+    <Button android:id="@+id/create_cellbot" android:layout_width="200dp"
+      android:layout_height="wrap_content" android:layout_weight="1"
+      android:text="Add new Cellbot" />
+    <Button android:id="@+id/create_goto_cloud" android:layout_width="200dp"
+      android:layout_height="wrap_content" android:layout_weight="1"
+      android:text="Communicate to shared Cellbot" />
+  </LinearLayout>
+  
+</LinearLayout>

@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8" ?>
+
+<ScrollView
+  xmlns:android="http://schemas.android.com/apk/res/android"
+  android:id="@+id/ScrollView01"
+  android:layout_width="fill_parent"
+  android:layout_height="fill_parent">
+  <LinearLayout
+    android:orientation="vertical"
+    android:layout_width="fill_parent"
+    android:layout_height="wrap_content">
+    
+   
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="10pt"
+      android:textSize="10pt"
+      android:text="Networking"/>
+      <CheckBox
+        android:text="Connect to Cellserv"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      </CheckBox>
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="CellServ Adddress"/>
+    <EditText
+      android:text="@+id/serverUrl"
+      android:id="@+id/serverUrl"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"></EditText>
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Robot ID"/>
+    <EditText
+      android:text="@+id/robotID"
+      android:id="@+id/robotID"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"></EditText>
+
+    <View
+      android:layout_height="5px"
+      android:layout_width="fill_parent"
+      android:background="#FFFFFF"/>
+
+    <TextView
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:paddingLeft="10pt"
+      android:paddingTop="10pt"
+      android:textSize="10pt"
+      android:text="Bot Comm"/>
+
+    <LinearLayout
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_margin="4px">
+      <CheckBox
+        android:text="Use Bluetooth Connection"
+        android:id="@+id/RevServo1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      </CheckBox>
+    </LinearLayout>
+
+
+      <CheckBox
+        android:text="Use Serial Port Connection"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      </CheckBox>
+
+
+
+    <LinearLayout
+      android:id="@+id/LinearLayout01"
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="horizontal"
+      android:layout_margin="4px">
+      <CheckBox
+        android:text="Use Audio"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content">
+      </CheckBox>
+    </LinearLayout>
+
+    <Button
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:text="Configure Servos"
+      android:onClick="launchServoAdjuster"
+      android:textSize="10pt"/>
+
+
+
+  </LinearLayout>
+
+</ScrollView>
