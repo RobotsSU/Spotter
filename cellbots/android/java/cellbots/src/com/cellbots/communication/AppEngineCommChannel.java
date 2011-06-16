@@ -19,9 +19,14 @@ import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 
+import org.apache.commons.httpclient.HttpConnection;
 import org.apache.commons.httpclient.HttpState;
 import org.apache.commons.httpclient.methods.PostMethod;
+
+/*
+These are the original import, which generate errors in HttpConnection
 import org.apache.http.HttpConnection;
+*/
 
 import android.os.Looper;
 import android.util.Log;
