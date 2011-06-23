@@ -141,13 +141,14 @@
       android:theme="@android:style/Theme.NoTitleBar">
     </activity>
 
-    <activity android:name=".directcontrol.CellbotPetActivity"
+    <!--  simplify by eliminating pet controlactivity android:name=".directcontrol.CellbotPetActivity"
       android:label="@string/app_name" android:screenOrientation="landscape"
       android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen"
       android:clearTaskOnLaunch="true" android:configChanges="orientation|keyboardHidden">
     </activity>
+    -->
 
-    <!-- Eyes Activities -->
+    <!-- simplify by removing Eyes Activities 
     <activity android:name=".eyes.EyesActivity" android:label="Eyes"
       android:launchMode="singleTop" android:screenOrientation="landscape"
       android:theme="@android:style/Theme.Black.NoTitleBar.Fullscreen">
@@ -160,22 +161,27 @@
 
     <activity android:name=".eyes.PrefsActivity" android:label="@string/app_name">
     </activity>
+	-->
 
 
-    <!-- Persona Provider -->
+    <!-- simplify by removing Persona Provider
     <provider android:name=".personas.LocalPersonasServer"
       android:authorities="com.cellbot.localpersonas" />
-
+	-->
 
   </application>
   <uses-permission android:name="android.permission.BLUETOOTH" />
   <uses-permission android:name="android.permission.BLUETOOTH_ADMIN" />
   <uses-permission android:name="android.permission.INTERNET" />
+  <uses-permission android:name="android.permission.VIBRATE" />
+  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  
+  <!-- simplify by eliminating camera, external storage, and audio use
   <uses-permission android:name="android.permission.CAMERA" />
   <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
-  <uses-permission android:name="android.permission.VIBRATE" />
   <uses-permission android:name="android.permission.RECORD_AUDIO" />
-  <uses-permission android:name="android.permission.WAKE_LOCK" />
+  -->
+  
   <uses-sdk android:minSdkVersion="8" />
   <supports-screens android:anyDensity="false"
     android:largeScreens="true" android:normalScreens="true"
