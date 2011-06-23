@@ -80,9 +80,12 @@ public class CellbotDirectControlActivity extends Activity implements UiEventLis
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.directcontrol_ui_main);
+    /* 
+     * simplify by reducing footprint
         personasView = (ImageView) findViewById(R.id.personasView);
         personasView.setPadding(0, 30, 0, 0);
         personasView.setScaleType(ScaleType.FIT_START);
+    */
         mControlsLayout = (LinearLayout) findViewById(R.id.dc_controls_layout);
         Display disp = ((WindowManager) getSystemService(Context.WINDOW_SERVICE))
                 .getDefaultDisplay();
@@ -92,6 +95,9 @@ public class CellbotDirectControlActivity extends Activity implements UiEventLis
         new UpdateImageTask().execute();
 
     }
+
+/*
+ * simplify by removing remote eyes
 
     private void updateRemoteEyesView(final Bitmap bmp) {
         runOnUiThread(new Runnable() {
@@ -105,7 +111,7 @@ public class CellbotDirectControlActivity extends Activity implements UiEventLis
             }
         });
     }
-
+*/
     private class UpdateImageTask extends UserTask<Void, Void, Bitmap> {
         @Override
         @SuppressWarnings("unchecked")
@@ -127,12 +133,15 @@ public class CellbotDirectControlActivity extends Activity implements UiEventLis
             return null;
         }
 
+/*
+ * simplify by removing remote eyes
         @Override
         public void onPostExecute(Bitmap bmp) {
             if (bmp != null) {
                 updateRemoteEyesView(bmp);
             }
         }
+*/
     }
 
     @Override

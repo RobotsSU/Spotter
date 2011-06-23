@@ -214,7 +214,8 @@ public class CellDroidActivity extends Activity {
             }
         });
         disconnectButton.setEnabled(false);
-
+/*
+ * eliminate pet to simplify project
         petButton = (Button) this.findViewById(R.id.pet_button);
         petButton.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
@@ -233,6 +234,7 @@ public class CellDroidActivity extends Activity {
             }
         });
         petButton.setEnabled(true);
+*/
     }
 
     @Override

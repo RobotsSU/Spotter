@@ -16,7 +16,7 @@
 
 package com.cellbots.local;
 
-import com.cellbots.eyes.EyesActivity;
+//import com.cellbots.eyes.EyesActivity;
 
 import java.net.InetAddress;
 import java.net.NetworkInterface;
